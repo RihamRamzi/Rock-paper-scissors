@@ -44,9 +44,16 @@ function playRound(humanChoice, computerChoice) {
   }
 }
 
+let rounds = 5;
 let humanScore = 0;
 let computerScore = 0;
-const humanChoice = getHumanChoice();
-const computerChoice = getComputerChoice();
 
-console.log(playRound(humanChoice, computerChoice));
+function playGame() {
+  let humanChoice = getHumanChoice();
+  let computerChoice = getComputerChoice();
+  console.log(humanChoice);
+
+  console.log(playRound(humanChoice, computerChoice));
+}
+
+for (i = 0; i < rounds; i++) {}
