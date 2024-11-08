@@ -20,7 +20,7 @@ function getHumanChoice() {
 }
 
 function playGame() {
-  let rounds = 5;
+  let rounds = 0;
   let humanScore = 0;
   let computerScore = 0;
 
@@ -74,3 +74,7 @@ function playGame() {
 }
 
 playGame();
+
+const rock = document.querySelector("#rock");
+const paper = document.querySelector("#paper");
+const scissors = document.querySelector("#scissors");
