@@ -1,3 +1,6 @@
+let humanScore = 0;
+let computerScore = 0;
+
 function getComputerChoice() {
   const randomNum = Math.floor(Math.random() * 3) + 1;
 
@@ -20,39 +23,7 @@ function getHumanChoice() {
 }
 
 function playGame() {
-  let rounds = 0;
-  let humanScore = 0;
-  let computerScore = 0;
-
-  function playRound(humanChoice, computerChoice) {
-    if (humanChoice === computerChoice) {
-      return `Draw!`;
-    } else if (humanChoice === "rock") {
-      if (computerChoice === "scissors") {
-        humanScore++;
-        return `Rock smashes scissors, YOU WIN!`;
-      } else if (computerChoice === "paper") {
-        computerScore++;
-        return `Paper crushed the Rock, YOU LOOSE!`;
-      }
-    } else if (humanChoice === "paper") {
-      if (computerChoice === "rock") {
-        humanScore++;
-        return `Paper crushed the Rock, YOU WIN!`;
-      } else if (computerChoice === "scissors") {
-        computerScore++;
-        return `Scissors sliced the paper, YOU LOOSE!`;
-      }
-    } else if (humanChoice === "scissors") {
-      if (computerChoice === "paper") {
-        humanScore++;
-        return `Scissors sliced the paper, YOU WIN`;
-      } else if (computerChoice === "rock") {
-        computerScore++;
-        return `Rock smashes scissors, YOU LOOSE!`;
-      }
-    }
-  }
+  let rounds = 5;
 
   for (i = 0; i < rounds; i++) {
     let humanChoice = getHumanChoice();
@@ -73,8 +44,34 @@ function playGame() {
   }
 }
 
-playGame();
+function playRound(humanChoice, computerChoice) {
+  if (humanChoice === computerChoice) {
+    return `Draw!`;
+  } else if (humanChoice === "rock") {
+    if (computerChoice === "scissors") {
+      humanScore++;
+      return `Rock smashes scissors, YOU WIN!`;
+    } else if (computerChoice === "paper") {
+      computerScore++;
+      return `Paper crushed the Rock, YOU LOOSE!`;
+    }
+  } else if (humanChoice === "paper") {
+    if (computerChoice === "rock") {
+      humanScore++;
+      return `Paper crushed the Rock, YOU WIN!`;
+    } else if (computerChoice === "scissors") {
+      computerScore++;
+      return `Scissors sliced the paper, YOU LOOSE!`;
+    }
+  } else if (humanChoice === "scissors") {
+    if (computerChoice === "paper") {
+      humanScore++;
+      return `Scissors sliced the paper, YOU WIN`;
+    } else if (computerChoice === "rock") {
+      computerScore++;
+      return `Rock smashes scissors, YOU LOOSE!`;
+    }
+  }
+}
 
-const rock = document.querySelector("#rock");
-const paper = document.querySelector("#paper");
-const scissors = document.querySelector("#scissors");
+playGame();
