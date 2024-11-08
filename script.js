@@ -65,18 +65,19 @@ function playRound(humanChoice, computerChoice) {
   }
 }
 
+const display = document.querySelector(".display");
 const rock = document.querySelector("#rock");
 const paper = document.querySelector("#paper");
 const scissors = document.querySelector("#scissors");
 
 rock.addEventListener("click", () => {
-  console.log(playRound(`rock`, getComputerChoice()));
+  display.textContent = playRound(`rock`, getComputerChoice());
 });
 paper.addEventListener("click", () => {
-  console.log(playRound(`paper`, getComputerChoice()));
+  display.textContent = playRound(`paper`, getComputerChoice());
 });
 scissors.addEventListener("click", () => {
-  console.log(playRound(`scissors`, getComputerChoice()));
+  display.textContent = playRound(`scissors`, getComputerChoice());
 });
 
 //console.log(playRound(getHumanChoice(), getComputerChoice()));
