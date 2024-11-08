@@ -13,15 +13,6 @@ function getComputerChoice() {
   }
 }
 
-function getHumanChoice() {
-  let userChoice = prompt("Select Rock, Paper or Scissors");
-  if (userChoice == null) {
-    alert`you exit the round`;
-  } else {
-    return userChoice.toLowerCase();
-  }
-}
-
 function playGame() {
   let rounds = 5;
 
@@ -74,4 +65,18 @@ function playRound(humanChoice, computerChoice) {
   }
 }
 
-playGame();
+const rock = document.querySelector("#rock");
+const paper = document.querySelector("#paper");
+const scissors = document.querySelector("#scissors");
+
+rock.addEventListener("click", () => {
+  console.log(playRound(`rock`, getComputerChoice()));
+});
+paper.addEventListener("click", () => {
+  console.log(playRound(`paper`, getComputerChoice()));
+});
+scissors.addEventListener("click", () => {
+  console.log(playRound(`scissors`, getComputerChoice()));
+});
+
+//console.log(playRound(getHumanChoice(), getComputerChoice()));
