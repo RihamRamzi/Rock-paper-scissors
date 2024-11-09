@@ -13,23 +13,36 @@ function getComputerChoice() {
   }
 }
 
-function playGame() {
-  for (i = 0; i < rounds; i++) {
-    let humanChoice = getHumanChoice();
-    let computerChoice = getComputerChoice();
-    console.log(`opponent choose ${computerChoice}`);
+function playAgain() {
+  const playAgainBtn = document.createElement("button");
+  playAgainBtn.textContent = `Play Again`;
+  container.appendChild(playAgainBtn);
+  rock.disabled = true;
+  paper.disabled = true;
+  scissors.disabled = true;
 
-    console.log(playRound(humanChoice, computerChoice));
+  playAgainBtn.addEventListener("click", () => {
+    humanScore = 0;
+    computerScore = 0;
+    humanSDis.textContent = `player score: ${humanScore}`;
+    computerSDis.textContent = `opponent score: ${computerScore}`;
+    rock.disabled = false;
+    paper.disabled = false;
+    scissors.disabled = false;
+    display.textContent = "";
+    winnerTxt.textContent = "";
+    container.removeChild(playAgainBtn);
+  });
+}
+
+function checkWinner() {
+  if (humanScore === 5) {
+    winnerTxt.textContent = `YOU WIN!`;
+    playAgain();
   }
-  console.log(`Your won ${humanScore} rounds`);
-  console.log(`Your opponent won ${computerScore} rounds`);
-
-  if (humanScore === computerScore) {
-    console.log(`The game is a Draw!`);
-  } else if (humanScore > computerScore) {
-    console.log(`You won the game!`);
-  } else {
-    console.log(`You lost the game!`);
+  if (computerScore === 5) {
+    winnerTxt.textContent = `YOU LOOSE!`;
+    playAgain();
   }
 }
 
@@ -68,25 +81,26 @@ function playRound(humanChoice, computerChoice) {
     }
   }
 }
-let rounds = 0;
 
+const container = document.querySelector(".container");
 const display = document.querySelector(".display");
 const rock = document.querySelector("#rock");
 const paper = document.querySelector("#paper");
 const scissors = document.querySelector("#scissors");
 const humanSDis = document.querySelector("#playerScore");
 const computerSDis = document.querySelector("#opponentScore");
+const winnerTxt = document.querySelector("#winnerTxt");
 
 rock.addEventListener("click", () => {
   display.textContent = playRound(`rock`, getComputerChoice());
-  rounds++;
+  checkWinner();
 });
 
 paper.addEventListener("click", () => {
   display.textContent = playRound(`paper`, getComputerChoice());
-  rounds++;
+  checkWinner();
 });
 scissors.addEventListener("click", () => {
   display.textContent = playRound(`scissors`, getComputerChoice());
-  rounds++;
+  checkWinner();
 });
