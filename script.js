@@ -104,5 +104,3 @@ scissors.addEventListener("click", () => {
   display.textContent = playRound(`scissors`, getComputerChoice());
   checkWinner();
 });
-
-//just testing with branches
